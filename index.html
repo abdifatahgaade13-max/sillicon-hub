@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>SILLICON STORE | Premium Gaming Credits & Subscriptions</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0c15;
+            color: #eef2ff;
+            scroll-behavior: smooth;
+        }
+
+        /* Background animation */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 20% 30%, #0f111f, #03050b);
+        }
+        .animated-bg::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+            animation: slowShift 18s infinite alternate;
+        }
+        @keyframes slowShift {
+            0% { transform: translate(0%, 0%) rotate(0deg); opacity: 0.4; }
+            100% { transform: translate(5%, 5%) rotate(2deg); opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        /* Glass morphism */
+        .glass-card, .product-card, .modal-content, .order-card {
+            background: rgba(20, 22, 36, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease;
+        }
+        .glass-card:hover { transform: translateY(-3px); border-color: rgba(99, 102, 241, 0.4); }
+
+        /* Navbar & Brand */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sillicon-brand { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .chip-core {
+            width: 52px; height: 52px;
+            background: linear-gradient(145deg, #2d2a5c, #1a1838);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+        .chip-core:hover { transform: rotate(5deg) scale(1.05); }
+        .circuit {
+            position: absolute;
+            inset: 6px;
+            background: repeating-linear-gradient(90deg, rgba(192,132,252,0.4) 0px, rgba(192,132,252,0.4) 2px, transparent 2px, transparent 8px);
+            border-radius: 10px;
+        }
+        .chip-letter { font-size: 26px; font-weight: 800; background: linear-gradient(135deg, #c084fc, #60a5fa); -webkit-background-clip: text; background-clip: text; color: transparent; z-index: 1; }
+        .brand-name { font-size: 26px; font-weight: 800; background: linear-gradient(135deg, #c084fc, #60a5fa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .brand-badge { font-size: 9px; color: #8b5cf6; letter-spacing: 2px; }
+
+        .right-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .support-btn, .orders-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 40px; cursor: pointer; font-size: 0.85rem; transition: 0.2s; }
+        .support-btn:hover, .orders-btn:hover { background: #1e293b; border-color: #c084fc; }
+        .login-sign { background: rgba(0,0,0,0.3); border-radius: 2rem; padding: 0.3rem 1rem; display: flex; gap: 1rem; }
+        .login-sign span { cursor: pointer; font-weight: 500; transition: color 0.2s; }
+        .login-sign span:hover { color: #c084fc; }
+        .user-panel { display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.4); padding: 0.3rem 1rem 0.3rem 0.8rem; border-radius: 60px; }
+        .user-avatar { width: 36px; height: 36px; background: linear-gradient(135deg, #c084fc, #60a5fa); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .logout-btn { background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 30px; cursor: pointer; font-size: 0.7rem; }
+
+        /* Welcome & Flash Sale */
+        .welcome { background: linear-gradient(110deg, rgba(30, 27, 58, 0.8), rgba(16, 18, 32, 0.9)); border-radius: 2rem; padding: 2rem; margin-bottom: 1.5rem; border-left: 5px solid #f59e0b; }
+        .flash-sale { background: linear-gradient(90deg, #f59e0b, #ef4444); border-radius: 2rem; padding: 1rem; margin-bottom: 2rem; text-align: center; font-weight: bold; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.9; } 50% { opacity: 1; box-shadow: 0 0 15px #f59e0b; } 100% { opacity: 0.9; } }
+
+        .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+        .cat-card { background: rgba(15, 18, 28, 0.8); border-radius: 1.6rem; padding: 1.2rem; text-align: center; cursor: pointer; transition: 0.2s; border: 1px solid rgba(255,255,255,0.05); }
+        .cat-card i { font-size: 2.5rem; color: #a78bfa; }
+        .cat-card.active { background: linear-gradient(145deg, #2a274b, #1f1d3a); border-color: #8b5cf6; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+
+        /* Modals */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); z-index: 10000; justify-content: center; align-items: center; }
+        .modal.active { display: flex; }
+        .modal-content { background: linear-gradient(145deg, #1a1c2e, #0f111f); padding: 2rem; border-radius: 2rem; width: 90%; max-width: 550px; max-height: 80vh; overflow-y: auto; }
+        .terms-box { background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 1rem; margin: 1rem 0; max-height: 200px; overflow-y: auto; font-size: 0.85rem; }
+        .support-form input, .support-form textarea { width: 100%; padding: 10px; margin: 8px 0; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; color: white; }
+        .order-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.8rem 0; }
+
+        .btn-gold { background: linear-gradient(135deg, #f59e0b, #d97706); border: none; padding: 10px; border-radius: 40px; font-weight: bold; cursor: pointer; width: 100%; color: white; }
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #1e293b; padding: 12px 24px; border-radius: 40px; border-left: 4px solid #c084fc; z-index: 10001; animation: fadeUp 0.3s; }
+        footer { margin-top: 3rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 1rem; text-align: center; font-size: 0.8rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+        @media (max-width:700px) { .container { padding: 1rem; } .brand-name { font-size: 1.3rem; } }
+    </style>
+</head>
+<body>
+<div class="animated-bg"></div>
+<div class="container">
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="sillicon-brand">
+            <div class="chip-core"><div class="circuit"></div><span class="chip-letter">S</span></div>
+            <div><div class="brand-name">SILLICON STORE</div><div class="brand-badge">PREMIUM DIGITAL</div></div>
+        </div>
+        <div class="right-actions">
+            <div class="orders-btn" id="myOrdersBtn"><i class="fas fa-box"></i> My Orders</div>
+            <div class="support-btn" id="supportBtn"><i class="fas fa-headset"></i> Contact</div>
+            <div id="authContainer" class="login-sign"><span id="loginBtn"><i class="fas fa-sign-in-alt"></i> Log In</span><span id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</span></div>
+        </div>
+    </div>
+
+    <!-- Flash Sale & Giveaway Banner -->
+    <div class="flash-sale">
+        🔥 JUMA FLASH SALE: <strong>50% OFF</strong> on ALL PUBG UC & FreeFire Diamonds! Use code: <strong>JUMA50</strong> 🔥 &nbsp;|&nbsp; 🎁 <strong>UC GIVEAWAY</strong> every month! 1000 UC winner announced on 1st.
+    </div>
+
+    <div class="welcome">
+        <h1>🚀 Welcome to SILLICON</h1>
+        <p>PUBG UC • FreeFire • eFootball Coins • Netflix • Steam • PS/Xbox. Instant delivery, PayPal/Venmo. <strong>50% Juma discount + Monthly UC Giveaway!</strong></p>
+    </div>
+
+    <!-- Categories -->
+    <div class="categories" id="categoryGrid">
+        <div class="cat-card" data-cat="pubg"><i class="fas fa-gamepad"></i><br><span>PUBG UC</span></div>
+        <div class="cat-card" data-cat="freefire"><i class="fas fa-fire"></i><br><span>FreeFire</span></div>
+        <div class="cat-card" data-cat="efootball"><i class="fas fa-futbol"></i><br><span>eFootball</span></div>
+        <div class="cat-card" data-cat="netflix"><i class="fab fa-netflix"></i><br><span>Netflix</span></div>
+        <div class="cat-card" data-cat="steam"><i class="fab fa-steam"></i><br><span>Steam</span></div>
+        <div class="cat-card" data-cat="console"><i class="fas fa-tv"></i><br><span>PS/Xbox</span></div>
+    </div>
+
+    <div class="products-panel glass-card" style="padding:1.5rem">
+        <h3><i class="fas fa-tag"></i> <span id="activeCategoryName">PUBG UC</span></h3>
+        <div id="productListContainer" class="product-grid" style="margin-top:1rem"></div>
+    </div>
+
+    <!-- Footer with info & legal -->
+    <footer>
+        <div>© 2026 SILLICON STORE — Trusted by gamers worldwide. Instant delivery.</div>
+        <div><i class="fas fa-shield-alt"></i> Secure SSL | <i class="fab fa-paypal"></i> PayPal Verified</div>
+        <div><span style="cursor:pointer; color:#c084fc" id="termsBtn"><i class="fas fa-file-contract"></i> Terms & Policy</span></div>
+    </footer>
+</div>
+
+<!-- Modal: Authentication (Login/Signup) -->
+<div id="authModal" class="modal"><div class="modal-content"><span style="float:right; cursor:pointer" onclick="closeModal('authModal')">&times;</span>
+    <h2 id="authTitle">Sign Up</h2>
+    <input type="email" id="authEmail" placeholder="Email" style="width:100%; margin:8px 0; padding:10px; background:#1e1f2e; border-radius:12px; border:none; color:white">
+    <input type="password" id="authPassword" placeholder="Password (min 4)" style="width:100%; margin:8px 0; padding:10px; background:#1e1f2e; border-radius:12px; border:none; color:white">
+    <button id="authSubmitBtn" class="btn-gold" style="margin-top:10px">Create Account</button>
+    <p style="margin-top:12px; text-align:center"><span id="authToggle" style="color:#c084fc; cursor:pointer">Already have an account? Log in</span></p>
+</div></div>
+
+<!-- Modal: Terms & Policy (must agree before purchase) -->
+<div id="termsModal" class="modal"><div class="modal-content"><span style="float:right; cursor:pointer" onclick="closeModal('termsModal')">&times;</span>
+    <h2><i class="fas fa-gavel"></i> Purchase Terms & Policy</h2>
+    <div class="terms-box">
+        <p><strong>1. Agreement:</strong> By purchasing any product on SILLICON, you agree to these terms.</p>
+        <p><strong>2. Digital Delivery:</strong> Codes are delivered instantly after payment confirmation. No refunds after code delivery.</p>
+        <p><strong>3. UC Giveaway:</strong> Every month we randomly select 1 buyer to win 1000 UC. Terms apply.</p>
+        <p><strong>4. 50% Juma Discount:</strong> Applies to selected items; discount auto-applied at checkout.</p>
+        <p><strong>5. Account Responsibility:</strong> Keep your login secure. SILLICON is not liable for unauthorized access.</p>
+        <p><strong>6. Support:</strong> For issues, contact via the support modal within 48 hours.</p>
+        <p><strong>7. Privacy:</strong> We do not share your data. Email used only for order updates & giveaway.</p>
+    </div>
+    <button id="acceptTermsBtn" class="btn-gold">✓ I Accept the Terms & Continue Purchase</button>
+</div></div>
+
+<!-- Modal: Contact Support (send issue to Gmail simulation) -->
+<div id="supportModal" class="modal"><div class="modal-content"><span style="float:right; cursor:pointer" onclick="closeModal('supportModal')">&times;</span>
+    <h2><i class="fas fa-envelope"></i> Contact Support</h2>
+    <p>Our official email: <strong>support@silliconstore.com</strong> (we will reply within 12h).</p>
+    <div class="support-form">
+        <input type="text" id="supportName" placeholder="Your name">
+        <input type="email" id="supportEmail" placeholder="Your email">
+        <textarea id="supportMessage" rows="3" placeholder="Describe your issue (order, payment, etc.)"></textarea>
+        <button id="sendSupportBtn" class="btn-gold"><i class="fas fa-paper-plane"></i> Send Issue</button>
+        <p id="supportConfirm" style="margin-top:8px; font-size:0.8rem; color:#a78bfa"></p>
+    </div>
+</div></div>
+
+<!-- Modal: My Orders & Account Info -->
+<div id="ordersModal" class="modal"><div class="modal-content"><span style="float:right; cursor:pointer" onclick="closeModal('ordersModal')">&times;</span>
+    <h2><i class="fas fa-user-circle"></i> My Account & Orders</h2>
+    <div id="accountInfo" style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:1rem; margin:1rem 0">
+        <p><strong>📧 Email:</strong> <span id="displayEmail">Not logged in</span></p>
+        <p><strong>🎁 UC Giveaway Entry:</strong> <span id="giveawayStatus">Login to participate</span></p>
+        <p><strong>🏷️ Active Discount:</strong> 50% OFF on Juma (Friday)</p>
+    </div>
+    <h3>📦 Order History</h3>
+    <div id="ordersList" style="max-height:250px; overflow-y:auto">No orders yet. Complete a purchase to see history.</div>
+</div></div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=test&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,paylater" data-sdk-integration-source="developer-studio"></script>
+<script>
+    // ----------------------- DATA & STATE -----------------------
+    let currentUser = null;          // { email }
+    let userOrders = [];             // each order: { id, item, amount, date, category }
+    let pendingPurchase = null;      // store item info before terms acceptance
+
+    // Load from localStorage
+    function loadData() {
+        const savedUser = localStorage.getItem('sillicon_user');
+        if(savedUser) currentUser = JSON.parse(savedUser);
+        const savedOrders = localStorage.getItem('sillicon_orders');
+        if(savedOrders) userOrders = JSON.parse(savedOrders);
+        updateAuthUI();
+    }
+    function saveUser() { if(currentUser) localStorage.setItem('sillicon_user', JSON.stringify(currentUser)); else localStorage.removeItem('sillicon_user'); }
+    function saveOrders() { localStorage.setItem('sillicon_orders', JSON.stringify(userOrders)); }
+
+    // Helper: show toast
+    function showToast(msg, isError = false) {
+        let t = document.createElement('div'); t.className = 'toast'; t.innerHTML = `<i class="fas ${isError ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i> ${msg}`;
+        document.body.appendChild(t); setTimeout(() => t.remove(), 3500);
+    }
+
+    // Update navbar UI
+    function updateAuthUI() {
+        const container = document.getElementById('authContainer');
+        if(currentUser) {
+            container.innerHTML = `<div class="user-panel"><div class="user-avatar"><i class="fas fa-user"></i></div><span>${currentUser.email.length>18?currentUser.email.substring(0,15)+'…':currentUser.email}</span><div class="logout-btn" id="logoutBtn">Exit</div></div>`;
+            document.getElementById('logoutBtn')?.addEventListener('click', () => { currentUser = null; saveUser(); updateAuthUI(); renderProducts(); showToast("Logged out"); });
+        } else {
+            container.innerHTML = `<div class="login-sign"><span id="loginBtn"><i class="fas fa-sign-in-alt"></i> Log In</span><span id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</span></div>`;
+            document.getElementById('loginBtn')?.addEventListener('click', () => openModal('authModal', 'login'));
+            document.getElementById('signupBtn')?.addEventListener('click', () => openModal('authModal', 'signup'));
+        }
+    }
+
+    // Auth logic (simple local)
+    function handleAuth(mode, email, pass) {
+        let users = JSON.parse(localStorage.getItem('sillicon_users') || '[]');
+        if(mode === 'signup') {
+            if(users.find(u=>u.email===email)) { showToast("Email already exists", true); return false; }
+            users.push({ email, password: pass });
+            localStorage.setItem('sillicon_users', JSON.stringify(users));
+            currentUser = { email };
+            saveUser(); updateAuthUI(); showToast(`Welcome ${email}! 🎉`);
+            closeModal('authModal');
+            return true;
+        } else {
+            let found = users.find(u=>u.email===email && u.password===pass);
+            if(found) { currentUser = { email }; saveUser(); updateAuthUI(); showToast(`Welcome back ${email}`); closeModal('authModal'); return true; }
+            else { showToast("Invalid credentials", true); return false; }
+        }
+    }
+
+    // ---------- PURCHASE FLOW WITH TERMS ----------
+    function requestPurchase(itemName, price, categoryName) {
+        if(!currentUser) { showToast("Please login to purchase", true); openModal('authModal', 'login'); return false; }
+        pendingPurchase = { itemName, price, categoryName };
+        openModal('termsModal');
+        return false;
+    }
+    document.getElementById('acceptTermsBtn')?.addEventListener('click', () => {
+        if(!pendingPurchase) { closeModal('termsModal'); return; }
+        // Simulate successful order after terms acceptance (real PayPal flow)
+        const orderId = 'ORD-' + Date.now() + Math.floor(Math.random()*1000);
+        const newOrder = { id: orderId, item: pendingPurchase.itemName, amount: pendingPurchase.price, date: new Date().toLocaleString(), category: pendingPurchase.categoryName };
+        userOrders.unshift(newOrder);
+        saveOrders();
+        showToast(`✅ Order placed! ${pendingPurchase.itemName} for $${pendingPurchase.price}. Code sent to email.`);
+        // In real scenario, PayPal would trigger capture, but we simulate success after terms agreement.
+        if(window.paypal && false){} // placeholder
+        closeModal('termsModal');
+        pendingPurchase = null;
+        // PayPal manual simulation: we already showed success; you can also trigger real button but for demo we emulate.
+        // However we keep PayPal buttons functional: they will show real checkout only if user is logged.
+    });
+
+    // Render PayPal Buttons (real integration)
+    function renderPayPalButton(containerId, itemName, price, category) {
+        if(!window.paypal) return;
+        const container = document.getElementById(containerId);
+        if(!container) return;
+        container.innerHTML = '';
+        paypal.Buttons({
+            style: { layout: 'horizontal', color: 'gold', shape: 'pill' },
+            createOrder: (data, actions) => {
+                if(!currentUser) { showToast("Please login first", true); openModal('authModal', 'login'); return Promise.reject(); }
+                return actions.order.create({ purchase_units: [{ description: `${category} - ${itemName}`, amount: { value: price.toFixed(2), currency_code: 'USD' } }] });
+            },
+            onApprove: (data, actions) => actions.order.capture().then(details => {
+                const orderIdData = 'ORD-' + Date.now();
+                userOrders.unshift({ id: orderIdData, item: itemName, amount: price, date: new Date().toLocaleString(), category: category });
+                saveOrders();
+                showToast(`✅ Payment successful! ${itemName} delivered instantly. Thank you ${details.payer.name.given_name}`);
+            }),
+            onError: () => showToast("Payment error", true)
+        }).render(`#${containerId}`);
+    }
+
+    // Store Data & Rendering
+    const storeData = {
+        pubg: { name: "PUBG UC", packs: [
+            { title: "60 UC +6", desc: "Starter", price: 0.99, bonus: "66 UC" },{ title: "300 UC +25", desc: "Standard", price: 4.99, bonus: "325 UC" },
+            { title: "600 UC +60", desc: "Popular", price: 9.99, bonus: "660 UC" },{ title: "1500 UC +300", desc: "Value", price: 24.99, bonus: "1800 UC" },
+            { title: "3000 UC +850", desc: "Best Deal", price: 49.99, bonus: "3850 UC" },{ title: "6000 UC +2100", desc: "Pro Max", price: 99.99, bonus: "8100 UC" }
+        ]},
+        freefire: { name: "FreeFire", packs: [
+            { title: "100+10 💎", desc: "Entry", price: 0.99 },{ title: "310+31", desc: "Standard", price: 2.99 },{ title: "520+52", desc: "Popular", price: 4.99 },
+            { title: "1060+110", desc: "Best Value", price: 9.99 },{ title: "2180+242", desc: "Pro", price: 19.99 },{ title: "5600+600", desc: "Legend", price: 49.99 }
+        ]},
+        efootball: { name: "eFootball", packs: [{ title: "100 Coins", price: 1.99 },{ title: "500+30", price: 8.99 },{ title: "1200+100", price: 19.99 },{ title: "3000+500", price: 44.99 }] },
+        netflix: { name: "Netflix", packs: [{ title: "Shared 1M", price: 4.00 },{ title: "Private 1M", price: 12.99 }] },
+        steam: { name: "Steam", packs: [{ title: "$20 Card", price: 20.00 },{ title: "$50 Card", price: 49.50 }] },
+        console: { name: "PS/Xbox", packs: [{ title: "$10 Card", price: 10.00 },{ title: "$25 Card", price: 25.00 },{ title: "$50 Card", price: 49.00 }] }
+    };
+    let currentCat = "pubg";
+
+    function renderProducts() {
+        const cat = storeData[currentCat];
+        if(!cat) return;
+        document.getElementById('activeCategoryName').innerText = cat.name;
+        let html = '';
+        cat.packs.forEach((p, idx) => {
+            let btnId = `btn-${currentCat}-${idx}`;
+            let priceVal = p.price;
+            html += `<div class="product-card glass-card" style="padding:1rem"><div class="product-name">${p.title}</div><div class="product-desc">${p.desc || 'Instant'}</div><div class="price">$${priceVal.toFixed(2)}</div><div id="${btnId}" class="paypal-button-container"></div><div class="payment-badge"><i class="fab fa-paypal"></i> PayPal / Venmo</div></div>`;
+        });
+        document.getElementById('productListContainer').innerHTML = html;
+        setTimeout(() => {
+            cat.packs.forEach((p, idx) => {
+                let btnId = `btn-${currentCat}-${idx}`;
+                renderPayPalButton(btnId, p.title, p.price, cat.name);
+            });
+        }, 100);
+    }
+
+    // Modal management
+    function openModal(modalId, mode = null) {
+        document.getElementById(modalId).classList.add('active');
+        if(modalId === 'authModal' && mode) {
+            document.getElementById('authTitle').innerText = mode === 'login' ? 'Log In' : 'Sign Up';
+            window.authMode = mode;
+        }
+    }
+    function closeModal(modalId) { document.getElementById(modalId).classList.remove('active'); }
+
+    // Orders & Account view
+    function showOrdersAndAccount() {
+        if(!currentUser) { showToast("Please login to view orders", true); openModal('authModal','login'); return; }
+        document.getElementById('displayEmail').innerText = currentUser.email;
+        document.getElementById('giveawayStatus').innerHTML = `✅ Entered! Every purchase counts. Winner announced monthly.`;
+        let ordersHtml = userOrders.length === 0 ? '<p>No orders yet. Buy something to see history.</p>' : '';
+        userOrders.forEach(o => { ordersHtml += `<div class="order-item"><strong>${o.item}</strong> - $${o.amount} <br><small>${o.date} | ID: ${o.id}</small></div>`; });
+        document.getElementById('ordersList').innerHTML = ordersHtml;
+        openModal('ordersModal');
+    }
+
+    // Support: send email simulation
+    document.getElementById('sendSupportBtn')?.addEventListener('click', () => {
+        let name = document.getElementById('supportName').value;
+        let email = document.getElementById('supportEmail').value;
+        let msg = document.getElementById('supportMessage').value;
+        if(!name || !email || !msg) { showToast("Please fill all fields", true); return; }
+        // Simulate sending to Gmail (just confirmation)
+        document.getElementById('supportConfirm').innerHTML = `✅ Issue sent to support@silliconstore.com! We'll reply within 24h.`;
+        showToast("Support ticket created! Check email soon.");
+        setTimeout(() => { document.getElementById('supportConfirm').innerHTML = ''; }, 3000);
+        document.getElementById('supportName').value = ''; document.getElementById('supportEmail').value = ''; document.getElementById('supportMessage').value = '';
+        closeModal('supportModal');
+    });
+
+    // Events
+    document.getElementById('myOrdersBtn')?.addEventListener('click', showOrdersAndAccount);
+    document.getElementById('supportBtn')?.addEventListener('click', () => openModal('supportModal'));
+    document.getElementById('termsBtn')?.addEventListener('click', () => openModal('termsModal'));
+    document.getElementById('authSubmitBtn')?.addEventListener('click', () => {
+        let email = document.getElementById('authEmail').value;
+        let pass = document.getElementById('authPassword').value;
+        if(!email || !pass) { showToast("Enter email/password", true); return; }
+        handleAuth(window.authMode || 'signup', email, pass);
+    });
+    document.getElementById('authToggle')?.addEventListener('click', () => {
+        let newMode = (document.getElementById('authTitle').innerText === 'Log In') ? 'signup' : 'login';
+        openModal('authModal', newMode);
+    });
+    document.querySelectorAll('.cat-card').forEach(card => {
+        card.addEventListener('click', () => {
+            let cat = card.getAttribute('data-cat');
+            if(cat) { currentCat = cat; renderProducts(); }
+            document.querySelectorAll('.cat-card').forEach(c=>c.classList.remove('active'));
+            card.classList.add('active');
+        });
+    });
+    window.onclick = (e) => { if(e.target.classList?.contains('modal')) e.target.classList.remove('active'); };
+
+    loadData();
+    renderProducts();
+    setInterval(() => { const banner = document.querySelector('.flash-sale'); if(banner) banner.style.transform = "scale(1.01)"; setTimeout(()=>{if(banner) banner.style.transform="";},400); }, 5000);
+</script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
